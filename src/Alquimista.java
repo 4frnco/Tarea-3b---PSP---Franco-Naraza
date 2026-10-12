@@ -3,20 +3,34 @@ public class Alquimista {
 
     public static void main(String[] args) {
 
-        // creamos una pocion y su hilo
+        // cuatro pociones
         Pocion p1 = new Pocion("aprobado");
+        Pocion p2 = new Pocion("honestidad");
+        Pocion p3 = new Pocion("esfuerzo");
+        Pocion p4 = new Pocion("trabajo");
+
+        // un hilo para cada pocion
         Thread h1 = new Thread(p1, "Caldero-aprobado");
+        Thread h2 = new Thread(p2, "Caldero-honestidad");
+        Thread h3 = new Thread(p3, "Caldero-esfuerzo");
+        Thread h4 = new Thread(p4, "Caldero-trabajo");
 
-        h1.start();
+        Thread[] hilos = {h1, h2, h3, h4};
 
-        // esperamos a que termine
-        try {
-            h1.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        // arrancamos los hilos
+        for (int i = 0; i < hilos.length; i++) {
+            hilos[i].start();
         }
 
-        // mostramos el tiempo de la pocion
-        System.out.println("Tiempo total: " + p1.getTiempoTotal() + " ms");
+        // esperamos a que terminen
+        for (int i = 0; i < hilos.length; i++) {
+            try {
+                hilos[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Todas las pociones han terminado.");
     }
 }
