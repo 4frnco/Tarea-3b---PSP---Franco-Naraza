@@ -1,12 +1,15 @@
 
 import java.util.Random;
 
+// representa una pocion que se prepara en varias fases dentro de un hilo
 public class Pocion implements Runnable {
 
     private String nombre;
     private int fases;
     private int duracion;
     private long tiempoTotal;
+
+     // crea una pociñon con un número aleatorio de fases y una duracion aleatoria para cada fase
 
     public Pocion(String nombre) {
         this.nombre = nombre;
@@ -16,6 +19,8 @@ public class Pocion implements Runnable {
         fases = random.nextInt(5) + 4;
         duracion = random.nextInt(201) + 200;
     }
+
+     // ejecuta todas las fases de la poción y mide el tiempo total
 
     @Override
     public void run() {
@@ -36,9 +41,12 @@ public class Pocion implements Runnable {
         System.out.println("[" + nombre + "] lista en " + tiempoTotal + " ms");
     }
 
+     // devuelve el nombre de la poción
     public String getNombre() {
         return nombre;
     }
+
+     // devuelve el tiempo total que ha tardado la poción
 
     public long getTiempoTotal() {
         return tiempoTotal;
