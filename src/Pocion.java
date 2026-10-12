@@ -6,6 +6,7 @@ public class Pocion implements Runnable {
     private String nombre;
     private int fases;
     private int duracion;
+    private long tiempoTotal;
 
     public Pocion(String nombre) {
         this.nombre = nombre;
@@ -18,6 +19,8 @@ public class Pocion implements Runnable {
 
     @Override
     public void run() {
+        long inicio = System.currentTimeMillis();
+
         for (int i = 1; i <= fases; i++) {
             try {
                 Thread.sleep(duracion);
@@ -28,10 +31,16 @@ public class Pocion implements Runnable {
             System.out.println("[" + nombre + "] fase " + i + "/" + fases);
         }
 
-        System.out.println("[" + nombre + "] lista");
+        tiempoTotal = System.currentTimeMillis() - inicio;
+
+        System.out.println("[" + nombre + "] lista en " + tiempoTotal + " ms");
     }
 
     public String getNombre() {
         return nombre;
+    }
+
+    public long getTiempoTotal() {
+        return tiempoTotal;
     }
 }

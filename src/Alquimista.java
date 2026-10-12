@@ -16,6 +16,7 @@ public class Alquimista {
             e.printStackTrace();
         }
 
-        System.out.println("Pocion preparada.");
+        // mostramos el tiempo de la pocion
+        System.out.println("Tiempo total: " + p1.getTiempoTotal() + " ms");
     }
 }
