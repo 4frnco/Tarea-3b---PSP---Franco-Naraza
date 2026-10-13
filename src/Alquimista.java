@@ -57,14 +57,14 @@ public class Alquimista
         }
 
         // mostramos el informe final
-        System.out.println("Todas las pociones están listas.");
+        System.out.println("Todas las pociones están listas Franco.");
         System.out.println("Tiempo real: " + tiempoReal + " ms");
         System.out.println("Una detrás de otra: " + suma + " ms");
         System.out.println("La más lenta: " + masLenta.getNombre()
                 + " (" + masLenta.getTiempoTotal() + " ms)");
     }
 
-     // cuenta cuantos hilos del array siguen ejecutandose
+     // cuenta cuantos hilos siguen ejecutandose
 
     public static int contar(Thread[] hilos) {
         int contador = 0;
@@ -78,4 +78,3 @@ public class Alquimista
         return contador;
     }
 }
-
